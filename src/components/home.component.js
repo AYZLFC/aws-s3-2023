@@ -1,19 +1,60 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-const myapp = 'home page'
+class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      isLoading: true,
+      error: null,
+    };
+  }
 
-export default class home extends Component {
-
+  componentDidMount() {
+    fetch('https://date.nager.at/api/v2/publicholidays/2023/US')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          data: data,
+          isLoading: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error: error.message,
+          isLoading: false,
+        });
+      });
+  }
 
   render() {
+    const { data, isLoading, error } = this.state;
+
+    if (isLoading) {
+      return <p>Loading...</p>;
+    }
+
+    if (error) {
+      return <p>Error: {error}</p>;
+    }
+
     return (
       <div className="mb-3">
-        <h3>{myapp}</h3>
-
-        
-
-          hi this is my home
-        </div>
-    )
+        <h1>API Call Component</h1>
+        {data && (
+          <div>
+            <p>Data:</p>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+          </div>
+        )}
+      </div>
+    );
   }
 }
+
+export default Home;
