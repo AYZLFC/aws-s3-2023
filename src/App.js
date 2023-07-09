@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
+import Home from './components/home.component'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={'/sign-in'}>
-              positronX
+              my crypto app
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
@@ -27,6 +28,11 @@ function App() {
                     Sign up
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/home'}>
+                    Home
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -38,6 +44,7 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/home" element={<Home />} />
             </Routes>
           </div>
         </div>
