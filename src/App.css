@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.content-wrapper {
+  padding-top: 10%; /* Adjust the value as needed to create enough space */
+}

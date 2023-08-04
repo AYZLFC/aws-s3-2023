@@ -13,39 +13,30 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={'/sign-in'}>
-              my crypto app
+            <Link className="navbar-brand" to={'/'}>
+            <img src={require('./images/animalsense-logo512x512.png')} alt="AnimalSense Logo"  style={{ width: '50px', height: 'auto' }}/>&nbsp;
+              AnimalSense
             </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-in'}>
+            <Link className="nav-link" to={'/sign-in'}>
                     Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
+            </Link>
+            <Link className="nav-link" to={'/sign-up'} >
                     Sign up
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/home'}>
-                    Home
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            </Link>
+            
+                  
+                
           </div>
         </nav>
-
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Routes>
-              <Route exact path="/" element={<Login />} />
-              <Route path="/sign-in" element={<Login />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/home" element={<Home />} />
-            </Routes>
+        <div className="content-wrapper">
+          <div className="auth-wrapper">
+            <div className="auth-inner">
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/sign-in" element={<Login />} />
+                <Route path="/sign-up" element={<SignUp />} />
+              </Routes>
+            </div>
           </div>
         </div>
       </div>
